@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Jewelry Products | JewelVibe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ====== NAVBAR (FIXED) ====== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fa-solid fa-gem"></i> Jewel<span>Vibe</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link active">Products</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== ALL PRODUCTS GRID ====== -->
+    <section class="section" style="padding-top: 6rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Complete Jewelry Collection</h2>
+                <p class="section-subtitle">Every piece tells a story. Find the perfect accessory for every moment.</p>
+            </div>
+            <div class="products-grid" id="allProductsGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 JewelVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="productModalOverlay">
+        <div class="modal product-modal" id="productModal">
+            <button class="modal-close" id="closeProductModal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="product-modal-body" id="productModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModalOverlay">
+        <div class="modal cart-modal" id="cartModal">
+            <button class="modal-close" id="closeCartModal"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="cart-modal-title"><i class="fa-solid fa-cart-shopping"></i> Your Cart</h3>
+            <div class="cart-items-container" id="cartItemsContainer"></div>
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fa-solid fa-cart-plus"></i>
+                <p>Your cart is empty.</p>
+                <span>Browse our jewelry and add your favorites!</span>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-price" id="cartTotalPrice">₱0.00</span>
+                </div>
+                <div class="checkout-form" id="checkoutForm">
+                    <h4><i class="fa-solid fa-clipboard-list"></i> Checkout Details</h4>
+                    <div class="form-row">
+                        <div class="form-group"><label>Full Name *</label><input type="text" id="customerName" placeholder="Enter your full name" required></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="customerEmail" placeholder="Enter your email" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="customerPhone" placeholder="e.g. +63 912 345 6789" required></div>
+                        <div class="form-group"><label>Address *</label><input type="text" id="customerAddress" placeholder="Enter your delivery address" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method *</label>
+                        <div class="payment-options">
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="Cash on Delivery" checked><span class="payment-label"><i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery</span></label>
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="Bank Transfer"><span class="payment-label"><i class="fa-solid fa-building-columns"></i> Bank Transfer</span></label>
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="GCash"><span class="payment-label"><i class="fa-solid fa-mobile-screen"></i> GCash</span></label>
+                        </div>
+                    </div>
+                    <button class="btn-order-now" id="btnOrderNow"><i class="fa-solid fa-check-circle"></i> Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <script src="products.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Cart & product logic (unchanged)
+        let cart = JSON.parse(localStorage.getItem('shopvibe_cart')) || [];
+
+        function saveCart() { localStorage.setItem('shopvibe_cart', JSON.stringify(cart)); }
+        function updateCartBadge() {
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartBadge').textContent = total;
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function addToCart(productId, qty = 1) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const existing = cart.find(item => item.productId === productId);
+            if (existing) existing.quantity += qty;
+            else cart.push({ productId, quantity: qty, title: product.title, price: product.price, image: product.image });
+            saveCart();
+            updateCartBadge();
+            showToast(`${product.title} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.productId !== productId);
+            saveCart();
+            updateCartBadge();
+            renderCartItems();
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cartItemsContainer');
+            const empty = document.getElementById('cartEmpty');
+            const footer = document.getElementById('cartFooter');
+            const totalPrice = document.getElementById('cartTotalPrice');
+            if (cart.length === 0) {
+                empty.style.display = 'block';
+                container.innerHTML = '';
+                footer.style.display = 'none';
+            } else {
+                empty.style.display = 'none';
+                footer.style.display = 'block';
+                container.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image"><img src="${item.image}" alt="${item.title}"></div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-qty">Qty: ${item.quantity}</div>
+                        </div>
+                        <div class="cart-item-price">₱${(item.price * item.quantity).toLocaleString()}</div>
+                        <button class="cart-item-remove" data-id="${item.productId}"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `).join('');
+                const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+                totalPrice.textContent = `₱${total.toLocaleString()}`;
+                document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', () => removeFromCart(parseInt(btn.dataset.id)));
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('allProductsGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-card-image"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
+                    <div class="product-card-content">
+                        <span class="product-category">${p.category}</span>
+                        <h3 class="product-title">${p.title}</h3>
+                        <div class="product-footer">
+                            <span class="product-price">₱${p.price.toLocaleString()}</span>
+                            <button class="btn-view" data-id="${p.id}">View Product</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.btn-view').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const product = products.find(p => p.id == btn.dataset.id);
+                    if (!product) return;
+                    const body = document.getElementById('productModalBody');
+                    body.innerHTML = `
+                        <div class="product-detail-image"><img src="${product.image}" alt="${product.title}"></div>
+                        <div class="product-detail-info">
+                            <span class="product-detail-category">${product.category}</span>
+                            <h2>${product.title}</h2>
+                            <p class="product-detail-desc">${product.description}</p>
+                            <div class="product-detail-price">₱${product.price.toLocaleString()}</div>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" id="modalQty" value="1" min="1" max="99">
+                            </div>
+                            <button class="btn-add-to-cart-modal" data-id="${product.id}"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    `;
+                    document.getElementById('productModalOverlay').classList.add('active');
+                    document.querySelector('.btn-add-to-cart-modal').addEventListener('click', () => {
+                        const qty = parseInt(document.getElementById('modalQty').value) || 1;
+                        addToCart(product.id, qty);
+                    });
+                });
+            });
+
+            updateCartBadge();
+            document.getElementById('cartBtn').addEventListener('click', () => {
+                renderCartItems();
+                document.getElementById('cartModalOverlay').classList.add('active');
+            });
+            document.getElementById('closeCartModal').addEventListener('click', () => {
+                document.getElementById('cartModalOverlay').classList.remove('active');
+            });
+            document.getElementById('closeProductModal').addEventListener('click', () => {
+                document.getElementById('productModalOverlay').classList.remove('active');
+            });
+            [document.getElementById('productModalOverlay'), document.getElementById('cartModalOverlay')].forEach(overlay => {
+                overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
+            });
+            document.getElementById('btnOrderNow').addEventListener('click', () => {
+                if (cart.length === 0) return showToast('Cart is empty!');
+                const name = document.getElementById('customerName').value.trim();
+                const email = document.getElementById('customerEmail').value.trim();
+                const phone = document.getElementById('customerPhone').value.trim();
+                const address = document.getElementById('customerAddress').value.trim();
+                const payment = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+                if (!name || !email || !phone || !address) return showToast('Please fill all fields.');
+                if (!/\S+@\S+\.\S+/.test(email)) return showToast('Invalid email.');
+                const items = cart.map(i => `${i.title} x${i.quantity} - ₱${(i.price*i.quantity).toLocaleString()}`).join('\n');
+                const total = cart.reduce((s, i) => s + i.price*i.quantity, 0);
+                alert(`Order Confirmed!\n\n${name}\n${email}\n${phone}\n${address}\nPayment: ${payment}\n\nItems:\n${items}\n\nTotal: ₱${total.toLocaleString()}`);
+                cart = []; saveCart(); updateCartBadge(); renderCartItems();
+                document.getElementById('cartModalOverlay').classList.remove('active');
+                showToast('Order placed successfully!');
+            });
+        });
+    </script>
+</body>
+</html>

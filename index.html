@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopVibe - Your Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="nav-logo">
+                <i class="fa-solid fa-gem"></i>
+                Jewel<span>Vibe</span>
+            </a>
+
+            <!-- Nav Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+
+            <!-- Cart Button -->
+            <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+
+            <!-- Hamburger Menu (Mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME SECTION ==================== -->
+    <section class="section home-section" id="home">
+        <div class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="hero-badge">New Collection 2026</span>
+                <h1 class="hero-title">Discover Premium Products</h1>
+                <p class="hero-subtitle">
+                    Shop the latest trends with unbeatable prices. Quality products delivered straight to your doorstep.
+                </p>
+                <a href="products.html" class="hero-btn">
+                    Shop Jewelry <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="IMAGES/Elegant Pearl Necklace.png" alt="Featured Products" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRODUCTS SECTION ==================== -->
+<!-- ==================== FEATURED JEWELRY ==================== -->
+    <section class="section products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Jewelry</h2>
+                <p class="section-subtitle">Handpicked favorites from our collection</p>
+            </div>
+            <div class="products-grid" id="featuredGrid">
+                <!-- First 4 products loaded dynamically -->
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <a href="products.html" class="hero-btn" style="display: inline-flex;">
+                    View All Products <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/about-us/600/500" alt="About ShopVibe" loading="lazy">
+                </div>
+                <div class="about-content">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title">We're Passionate About Quality</h2>
+                    <p class="about-text">
+                        At <strong>ShopVibe</strong>, we believe shopping should be an experience. Founded in 2024, we've
+                        been committed to bringing you handpicked products that combine style, functionality, and value.
+                    </p>
+                    <p class="about-text">
+                        Our team carefully curates every item in our catalog, ensuring you get only the best. From trendy
+                        accessories to everyday essentials, we've got something for everyone.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Products</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have questions? We'd love to hear from you.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>Jewelry@shopvibe.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>+63 912 345 6789</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h4>Address</h4>
+                        <p>Cantilan, Surigao del Sur</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ShopVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== PRODUCT DETAIL MODAL ==================== -->
+    <div class="modal-overlay" id="productModalOverlay">
+        <div class="modal product-modal" id="productModal">
+            <button class="modal-close" id="closeProductModal" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="product-modal-body" id="productModalBody">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CART MODAL ==================== -->
+    <div class="modal-overlay" id="cartModalOverlay">
+        <div class="modal cart-modal" id="cartModal">
+            <button class="modal-close" id="closeCartModal" aria-label="Close cart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="cart-modal-title"><i class="fa-solid fa-cart-shopping"></i> Your Cart</h3>
+            <div class="cart-items-container" id="cartItemsContainer">
+                <!-- Dynamically populated -->
+            </div>
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fa-solid fa-cart-plus"></i>
+                <p>Your cart is empty.</p>
+                <span>Browse our products and add items to get started!</span>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-price" id="cartTotalPrice">₱0.00</span>
+                </div>
+                <!-- Checkout Form -->
+                <div class="checkout-form" id="checkoutForm">
+                    <h4><i class="fa-solid fa-clipboard-list"></i> Checkout Details</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email *</label>
+                            <input type="email" id="customerEmail" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" placeholder="e.g. +63 912 345 6789" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerAddress">Address *</label>
+                            <input type="text" id="customerAddress" placeholder="Enter your delivery address" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method *</label>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="Cash on Delivery" checked>
+                                <span class="payment-label">
+                                    <i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery
+                                </span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="Bank Transfer">
+                                <span class="payment-label">
+                                    <i class="fa-solid fa-building-columns"></i> Bank Transfer
+                                </span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="GCash">
+                                <span class="payment-label">
+                                    <i class="fa-solid fa-mobile-screen"></i> GCash
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn-order-now" id="btnOrderNow">
+                        <i class="fa-solid fa-check-circle"></i> Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+    
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Products data - easy to edit and add products -->
+    <script src="products.js"></script>
+    <!-- Main application logic -->
+    <script src="script.js"></script>
+
+    <script>
+        // Override the render for the home page to show only first 4 jewelry items
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuredGrid = document.getElementById('featuredGrid');
+            if (featuredGrid) {
+                const featured = products.slice(0, 4); // show first 4 jewelry pieces
+                featuredGrid.innerHTML = featured.map(product => `
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="${product.image}" alt="${product.title}" loading="lazy">
+                        </div>
+                        <div class="product-card-content">
+                            <span class="product-category">${product.category}</span>
+                            <h3 class="product-title">${product.title}</h3>
+                            <div class="product-footer">
+                                <span class="product-price">₱${product.price.toLocaleString()}</span>
+                                <button class="btn-view" data-id="${product.id}">View Product</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Attach event listeners to the "View Product" buttons
+                document.querySelectorAll('#featuredGrid .btn-view').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(btn.dataset.id);
+                        openProductModal(id); // uses function from original script.js
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
