@@ -4,7 +4,7 @@ const products = [
         title: "Elegant Pearl Necklace",
         category: "Necklaces",
         price: 3499,
-        image: "images/Elegant Pearl Necklace.png",
+        image: "IMAGES/Elegant Pearl Necklace.png",
         description: "Timeless freshwater pearl necklace with a sterling silver clasp. Each pearl is hand-selected for its luster and perfectly round shape. Length: 45cm + 5cm extender. Comes in a luxurious gift box.",
     },
     {
@@ -12,7 +12,7 @@ const products = [
         title: "Crystal Teardrop Earrings",
         category: "Earrings",
         price: 1899,
-        image: "images/Crystal Teardrop Earrings.png",
+        image: "IMAGES/Crystal Teardrop Earrings.png",
         description: "Dazzling teardrop earrings featuring genuine Swarovski crystals. Set in rhodium-plated brass for a brilliant shine. Hypoallergenic posts suitable for sensitive ears. Length: 3.5cm.",
     },
     {
@@ -20,7 +20,7 @@ const products = [
         title: "Gold Chain Bracelet",
         category: "Bracelets",
         price: 2799,
-        image: "images/Gold Chain Bracelet.png",
+        image: "IMAGES/Gold Chain Bracelet.png",
         description: "Classic 14k gold-plated chain bracelet with a secure lobster clasp. The delicate Cuban link design adds a touch of everyday elegance. Adjustable length: 17-20cm. Tarnish-resistant finish.",
     },
     {
@@ -28,7 +28,7 @@ const products = [
         title: "Solitaire Diamond Ring",
         category: "Rings",
         price: 12999,
-        image: "images/Solitaire Diamond Ring.png",
+        image: "IMAGES/Solitaire Diamond Ring.png",
         description: "Stunning solitaire ring with a brilliant-cut cubic zirconia center stone. Set in solid sterling silver with 18k white gold plating. Available in sizes 5-9. Perfect for engagements or special occasions.",
     },
     {
@@ -36,7 +36,7 @@ const products = [
         title: "Bohemian Beaded Anklet",
         category: "Anklets",
         price: 899,
-        image: "images/Bohemian Beaded Anklet.png",
+        image: "IMAGES/Bohemian Beaded Anklet.png",
         description: "Handcrafted anklet featuring colorful semi-precious stones and gold-plated spacers. Adjustable macrame cord fits most ankle sizes. Water-resistant and perfect for beach days.",
     },
     {
@@ -44,7 +44,7 @@ const products = [
         title: "Heart Locket Pendant",
         category: "Pendants",
         price: 2299,
-        image: "images/Heart Locket Pendant.png",
+        image: "IMAGES/Heart Locket Pendant.png",
         description: "Vintage-inspired heart locket in polished sterling silver. Opens to hold two small photos. Includes a 45cm silver chain. A sentimental gift she’ll cherish forever.",
     },
     {
@@ -52,7 +52,7 @@ const products = [
         title: "Art Deco Brooch",
         category: "Brooches",
         price: 1599,
-        image: "images/Art Deco Brooch.png",
+        image: "IMAGES/Art Deco Brooch.png",
         description: "Exquisite art deco brooch adorned with emerald-colored crystals and delicate filigree work. Gold-tone metal with a secure pin back. Adds a vintage flair to any jacket or dress.",
     },
     {
@@ -60,7 +60,7 @@ const products = [
         title: "Minimalist Ear Cuffs",
         category: "Earrings",
         price: 1299,
-        image: "images/Minimalist Ear Cuffs.png",
+        image: "IMAGES/Minimalist Ear Cuffs.png",
         description: "Set of 3 sterling silver ear cuffs – no piercing required. Modern geometric designs that wrap comfortably around the ear. Lightweight and perfect for stacking.",
     }
 ];
